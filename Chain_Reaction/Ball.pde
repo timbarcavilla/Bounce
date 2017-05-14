@@ -17,7 +17,7 @@ class Ball {
   Ball() {
     x = random(250.0);
     y = random(250.0);
-    rad = 2.0;
+    rad = 25.0;
     c = color(random(255), random(255), random(255));
     dx = random(-2.0, 2.0);
     dy = random(-2.0, 2.0);
@@ -31,9 +31,9 @@ class Ball {
   }
 
   void bounce() {
-    if (x == 0 || x == 600) {
-      dx = -dx;
-    } else if (y == 0 || y == 600) {
+    if (x <= 0 || x >= 600) {
+      dx= -dx;
+    } else if (y <= 0 || y >= 600) {
       dy = -dy;
     }
   }
