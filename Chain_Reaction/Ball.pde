@@ -25,9 +25,23 @@ class Ball {
   }
 
   void move() {
-    x+=dx;
-    y+=dy;
-    bounce();
+    if (state == 0){
+      x+=dx;
+      y+=dy;
+      bounce();
+    }
+    if (state == 1){
+      rad += 1.0;
+    }
+    if (rad >= 100.0){
+      state = 2;
+    }
+    if (state == 2){
+      rad -= 1.0;
+    }
+    if (rad <= 0.0){
+      state = 3;
+    }
   }
 
   void bounce() {
@@ -37,6 +51,7 @@ class Ball {
       dy = -dy;
     }
   }
+  
   
   boolean intersects(Ball b){
     return dist(b.x, b.y, this.x, this.y) < b.rad + this.rad;
