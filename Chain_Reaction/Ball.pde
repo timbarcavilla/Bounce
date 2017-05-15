@@ -37,4 +37,8 @@ class Ball {
       dy = -dy;
     }
   }
+  
+  boolean intersects(Ball b){
+    return dist(b.x, b.y, this.x, this.y) < b.rad + this.rad;
+  }
 }

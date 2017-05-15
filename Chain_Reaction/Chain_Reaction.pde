@@ -16,26 +16,38 @@ void draw() {
   background(0);
   for (int i = 0; i<balls.length; i++) {
     fill(balls[i].c);
-    ellipse(balls[i].x,balls[i].y,balls[i].rad*2,balls[i].rad*2);
+    ellipse(balls[i].x, balls[i].y, balls[i].rad*2, balls[i].rad*2);
     balls[i].move();
   }
-}
-
-void mouseClicked(){
-  reactionStarted = true;
-  Ball first = balls[0];
-  reaction(first);
-  for (int i = 0; i < balls.length; i++){
-    if (first.x == balls[i].x && first.y == balls[i].y){
-      reaction(balls[i]);
+  if (reactionStarted == true) {
+    Ball first = balls[0];
+    reaction(first);
+    for (int i = 0; i < balls.length; i++) {
+      for (int j = 0; j < balls.length; j++) {
+        if ((j != i) && ((balls[i].state == 1) || (balls[j].state == 1))) {
+          if (balls[i].intersects(balls[j])) {
+            reaction(balls[i]);
+          }
+        }
+      }
     }
   }
 }
 
-void reaction(Ball b){
+void mouseClicked() {
+  reactionStarted = true;
+}
+
+void reaction(Ball b) {
   b.dx = 0;
   b.dy = 0;
-  while (b.rad < 100){
+  b.state = 1;
+  while (b.rad < 50) {
     b.rad++;
   }
+  /* while (b.rad > 0){
+   b.rad--;
+   b.state = 3;
+   }
+   */
 }
