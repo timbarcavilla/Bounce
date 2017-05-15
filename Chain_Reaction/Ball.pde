@@ -15,12 +15,12 @@ class Ball {
    */
 
   Ball() {
-    x = random(250.0);
-    y = random(250.0);
-    rad = 25.0;
+    x = random(600.0);
+    y = random(650.0);
+    rad = 15.0;
     c = color(random(255), random(255), random(255));
-    dx = random(-2.0, 2.0);
-    dy = random(-2.0, 2.0);
+    dx = random(-4.0, 4.0);
+    dy = random(-4.0, 4.0);
     state = 0;
   }
 
